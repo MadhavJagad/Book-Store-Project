@@ -1,0 +1,140 @@
+// Colors
+$primary-dark: #4e3d2f;
+$secondary-dark: #2c1810;
+$tan: #d2b48c;
+$beige: #e6c795;
+$cream: #f4e9e3;
+
+// Loader Container
+.loader-container {
+  height: 100vh;
+  width: 100vw;
+  background: $cream;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+// Loader Content
+.loader-content {
+  text-align: center;
+  max-width: 600px;
+  padding: 50px;
+  background: $tan;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  animation: popIn 1s ease-in-out;
+
+  &:hover {
+    transform: scale(1.05);
+    transition: all 0.3s;
+  }
+  .spinner-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .spinner {
+      width: 80px;
+      height: 80px;
+      border: 8px solid $tan;
+      border-top: 8px solid $primary-dark;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin-bottom: 30px;
+    }
+  }
+
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+}
+
+// Book Animation
+.book-animation {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-bottom: 30px;
+
+  i {
+    font-size: 60px;
+    color: $primary-dark;
+    animation: float 1.5s infinite alternate;
+
+    &:nth-child(1) {
+      animation-delay: 0.2s;
+    }
+
+    &:nth-child(2) {
+      animation-delay: 0.4s;
+    }
+
+    &:nth-child(3) {
+      animation-delay: 0.6s;
+    }
+
+    &:hover {
+      color: $secondary-dark;
+      transform: scale(1.2);
+      transition: all 0.3s;
+    }
+  }
+}
+
+// Quote Styling
+.quote-container {
+  .quote {
+    font-size: 22px;
+    color: $primary-dark;
+    font-style: italic;
+    margin-bottom: 10px;
+
+    i {
+      color: $secondary-dark;
+      margin: 0 8px;
+    }
+  }
+
+  .author {
+    font-size: 18px;
+    color: $secondary-dark;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+}
+
+// Animations
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes popIn {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-15px);
+  }
+}

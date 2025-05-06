@@ -1,0 +1,110 @@
+// Colors
+$primary-dark: #4e3d2f;
+$secondary-dark: #2c1810;
+$tan: #d2b48c;
+$beige: #e6c795;
+$cream: #f4e9e3;
+
+// Container styling
+.login-container {
+  max-width: 600px;
+  margin: 80px auto;
+  padding: 30px;
+}
+
+// Card styling
+.card {
+  border: none;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.3s;
+
+  &:hover {
+    transform: translateY(-10px);
+  }
+
+  .card-header {
+    background-color: $secondary-dark;
+    color: #fff;
+    padding: 30px;
+
+    h2 {
+      font-size: 28px;
+    }
+  }
+
+  .card-body {
+    background: $cream;
+    padding: 40px;
+  }
+}
+
+// Form styling
+.form-group {
+  label {
+    font-size: 18px;
+    color: $primary-dark;
+
+    i {
+      margin-right: 10px;
+      color: $tan;
+    }
+  }
+
+  .form-control {
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid $tan;
+    transition: all 0.3s;
+
+    &:focus {
+      border-color: $secondary-dark;
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+    }
+  }
+}
+
+// Remember Me and Forgot Password Styling
+.form-check-label {
+  font-size: 16px;
+  color: $primary-dark;
+}
+
+.text-custom {
+  color: $primary-dark;
+  transition: color 0.3s;
+
+  &:hover {
+    color: $secondary-dark;
+  }
+}
+
+// Button styling
+.btn-custom {
+  background: $tan;
+  color: $secondary-dark;
+  font-size: 18px;
+  padding: 12px 30px;
+  transition: all 0.3s;
+
+  &:hover {
+    background: $primary-dark;
+    color: #fff;
+  }
+}
+
+// Signup Link Styling
+.text-center {
+  p {
+    font-size: 16px;
+
+    a {
+      color: $primary-dark;
+      transition: color 0.3s;
+
+      &:hover {
+        color: $secondary-dark;
+      }
+    }
+  }
+}

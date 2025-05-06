@@ -1,0 +1,379 @@
+<!-- HTML Template -->
+<header class="bookstore-header py-4">
+  <div class="container">
+    <h1 class="text-center mb-0">BOOKVERSE</h1>
+    <p class="text-center text-muted">Discover, Explore, Immerse</p>
+    <div class="d-flex justify-content-center align-content-center search-input">
+      <input type="text" placeholder="Search..." class="form-control" />
+      <div class="icon">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="featured-section py-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h2 class="section-title mb-4">Featured Collection</h2>
+      </div>
+    </div>
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+      <div class="col" *ngFor="let item of Books">
+        <div class="book-card">
+          <div class="book-card-image">
+            <span class="badge book-badge">New</span>
+            <img
+              [src]="'data:image/;base64,' + item.image"
+              class="img-fluid"
+              alt="{{ item.title }}"
+            />
+            <!-- <div class="book-actions">
+              <button
+                class="action-btn"
+                (click)="addToCart(item._id)"
+                data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasExample"
+              >
+                <i class="fas fa-shopping-bag"></i>
+              </button>
+              <a
+                [routerLink]="['/product-details', item._id]"
+                class="action-btn"
+              >
+                <i class="fas fa-eye"></i>
+              </a>
+            </div> -->
+          </div>
+          <div class="book-card-body">
+            <div class="book-category">{{ item.category }}</div>
+            <h5 class="book-title">{{ item.title }}</h5>
+            <p class="book-author">by {{ item.author }}</p>
+            <div class="book-price">${{ item.price | number : "1.2-2" }}</div>
+            <div class="book-rating">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star-half-alt"></i>
+              <span class="rating-count">(42)</span>
+            </div>
+            <div class="d-grid gap-2">
+              <button
+                class="btn btn-success mt-3"
+                (click)="addToCart(item._id)"
+                data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasExample"
+                aria-controls="offcanvasExample"
+              >
+                Add To Cart
+              </button>
+              <button
+                class="btn btn-primary"
+                [routerLink]="['/product-details', item._id]"
+              >
+                View Product
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Featured Categories Section -->
+<section class="categories-section py-5 bg-light">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h2 class="section-title mb-4">Browse Categories</h2>
+      </div>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="category-card fiction">
+          <div class="category-content">
+            <h3>Fiction</h3>
+            <p>Explore imaginary worlds</p>
+            <a href="#" class="btn btn-outline-light">Browse</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="category-card non-fiction">
+          <div class="category-content">
+            <h3>Non-Fiction</h3>
+            <p>Discover real stories</p>
+            <a href="#" class="btn btn-outline-light">Browse</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="category-card children">
+          <div class="category-content">
+            <h3>Children</h3>
+            <p>Magic for young minds</p>
+            <a href="#" class="btn btn-outline-light">Browse</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Special Offer Banner -->
+<section class="offer-banner py-5">
+  <div class="container">
+    <div class="offer-content text-center">
+      <h2>Summer Reading Sale</h2>
+      <p class="mb-4">Get 20% off on all bestsellers this month</p>
+      <a href="#" class="btn btn-lg btn-primary">Shop Now</a>
+    </div>
+  </div>
+</section>
+
+<!-- New Arrivals Section -->
+<section class="new-arrivals py-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h2 class="section-title mb-4">New Arrivals</h2>
+      </div>
+    </div>
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+      <div class="col" *ngFor="let item of Books.slice(0, 4)">
+        <div class="book-card">
+          <div class="book-card-image">
+            <img
+              [src]="'data:image/;base64,' + item.image"
+              class="img-fluid"
+              alt="{{ item.title }}"
+            />
+          </div>
+          <div class="book-card-body">
+            <div class="book-category">{{ item.category }}</div>
+            <h5 class="book-title">{{ item.title }}</h5>
+            <p class="book-author">by {{ item.author }}</p>
+            <div class="book-price">${{ item.price | number : "1.2-2" }}</div>
+            <div class="d-flex justify-content-end gap-2">
+              <button
+                class="btn btn-primary"
+                (click)="addToCart(item._id)"
+                data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasExample"
+              >
+                <i class="fas fa-shopping-bag"></i>
+              </button>
+              <a
+                [routerLink]="['/product-details', item._id]"
+                class="btn btn-secondary"
+              >
+                <i class="fas fa-eye"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials Section -->
+<section class="testimonials-section py-5 bg-light">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h2 class="section-title mb-4">What Our Readers Say</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4 mb-4">
+        <div class="testimonial-card">
+          <div class="testimonial-content">
+            <i class="fas fa-quote-left mb-3"></i>
+            <p>
+              BookVerse has completely transformed my reading experience. The
+              selection is incredible and delivery is always prompt.
+            </p>
+            <div class="testimonial-author">
+              <h5>Sarah Johnson</h5>
+              <p class="text-muted">Book Enthusiast</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="testimonial-card">
+          <div class="testimonial-content">
+            <i class="fas fa-quote-left mb-3"></i>
+            <p>
+              I've discovered so many amazing authors through BookVerse
+              recommendations. My bookshelf has never been happier!
+            </p>
+            <div class="testimonial-author">
+              <h5>David Chen</h5>
+              <p class="text-muted">Avid Reader</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="testimonial-card">
+          <div class="testimonial-content">
+            <i class="fas fa-quote-left mb-3"></i>
+            <p>
+              The customer service is exceptional. When I needed to exchange a
+              book, the process was seamless and quick.
+            </p>
+            <div class="testimonial-author">
+              <h5>Emma Wilson</h5>
+              <p class="text-muted">Monthly Subscriber</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Subscribe Section -->
+<section class="subscribe-section py-5">
+  <div class="container">
+    <div class="subscribe-content text-center">
+      <h2>Stay Updated</h2>
+      <p class="mb-4">
+        Subscribe to our newsletter for exclusive offers and new releases
+      </p>
+      <div class="row justify-content-center">
+        <div class="col-md-6">
+          <div class="input-group mb-3">
+            <input
+              type="email"
+              class="form-control"
+              placeholder="Your email address"
+            />
+            <button class="btn btn-primary" type="button">Subscribe</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Cart Offcanvas - Updated styling but same functionality -->
+<div
+  class="offcanvas offcanvas-end"
+  tabindex="-1"
+  id="offcanvasExample"
+  aria-labelledby="offcanvasExampleLabel"
+>
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasExampleLabel">
+      <i class="fas fa-shopping-bag me-2"></i>Your Cart
+    </h5>
+    <button
+      type="button"
+      class="btn-close"
+      data-bs-dismiss="offcanvas"
+      aria-label="Close"
+    ></button>
+  </div>
+  <div class="offcanvas-body">
+    <div *ngIf="!userService.isLoggedIn()" class="alert alert-warning">
+      <i class="fas fa-exclamation-triangle me-2"></i>Please login to view your
+      cart
+    </div>
+    <div *ngIf="userService.isLoggedIn()">
+      <div *ngIf="cartItems.length === 0" class="empty-cart">
+        <div class="text-center py-4">
+          <i class="fas fa-shopping-cart fa-3x mb-3"></i>
+          <p>Your cart is empty</p>
+          <button class="btn btn-outline-primary" data-bs-dismiss="offcanvas">
+            Continue Shopping
+          </button>
+        </div>
+      </div>
+      <div *ngFor="let item of cartItems" class="cart-item mb-3">
+        <div class="d-flex align-items-center">
+          <img
+            [src]="'data:image/;base64,' + item.book.image"
+            alt="{{ item.book.title }}"
+            class="cart-item-img"
+          />
+          <div class="cart-item-details ms-3">
+            <h6 class="mb-1">{{ item.book.title }}</h6>
+            <p class="text-muted mb-0">{{ item.book.author }}</p>
+            <div class="d-flex align-items-center mt-2">
+              <div class="item-price">
+                ${{ item.book.price | number : "1.2-2" }}
+              </div>
+              <div class="quantity-control ms-auto">
+                <button
+                  class="qty-btn"
+                  (click)="updateQuantity(item.book._id, item.quantity - 1)"
+                  [disabled]="item.quantity <= 1"
+                >
+                  -
+                </button>
+                <input
+                  type="number"
+                  class="qty-input"
+                  [value]="item.quantity"
+                  min="1"
+                  (change)="
+                    updateQuantity(item.book._id, $any($event.target).value)
+                  "
+                />
+                <button
+                  class="qty-btn"
+                  (click)="updateQuantity(item.book._id, item.quantity + 1)"
+                >
+                  +
+                </button>
+              </div>
+              <button
+                type="button"
+                class="btn-close ms-3"
+                (click)="removeFromCart(item.book._id)"
+              ></button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="cartItems.length > 0" class="cart-total mt-4">
+        <div class="d-flex justify-content-between align-items-center mb-2">
+          <span>Subtotal:</span>
+          <span>${{ getTotalPrice() | number : "1.2-2" }}</span>
+        </div>
+        <div class="d-flex justify-content-between align-items-center mb-2">
+          <span>Shipping:</span>
+          <span>Free</span>
+        </div>
+        <div
+          class="d-flex justify-content-between align-items-center total-line"
+        >
+          <span>Total:</span>
+          <span class="fw-bold">${{ getTotalPrice() | number : "1.2-2" }}</span>
+        </div>
+      </div>
+      <div class="d-grid gap-2 mt-4">
+        <button
+          class="btn btn-outline-dark cart-btn"
+          routerLink="/cart"
+          data-bs-dismiss="offcanvas"
+          [disabled]="cartItems.length === 0"
+        >
+          <i class="fas fa-shopping-cart me-2"></i>View Cart
+        </button>
+        <button
+          class="btn btn-primary checkout-btn"
+          [disabled]="cartItems.length === 0"
+        >
+          <i class="fas fa-credit-card me-2"></i>Checkout
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

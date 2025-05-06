@@ -1,0 +1,60 @@
+<div class="container">
+  <div class="card p-5 border-black">
+    <h2 class="text-center text-uppercase mb-3">Forgot your Password</h2>
+
+    <div *ngIf="errorMessage" class="alert alert-danger">
+      {{ errorMessage }}
+    </div>
+    <div *ngIf="successMessage" class="alert alert-success">
+      {{ successMessage }}
+    </div>
+
+    <form [formGroup]="forgotPasswordForm" (ngSubmit)="verifyOtp()">
+      <div class="form-floating mb-3 w-75">
+        <input
+          type="email"
+          class="form-control"
+          id="email"
+          placeholder="Email"
+          formControlName="email"
+          [class.is-invalid]="email?.touched && email?.invalid"
+        />
+        <label for="email">Email</label>
+      </div>
+      <div *ngIf="email?.touched && email?.invalid" class="text-danger mb-3">
+        <div *ngIf="email?.errors?.['required']">Email field is required!</div>
+        <div *ngIf="email?.errors?.['email']">Please enter a valid email!</div>
+      </div>
+      <div>
+        <button class="btn btn-secondary" (click)="sendOtp()" type="button">
+          Send OTP
+        </button>
+      </div>
+
+      <div class="form-floating my-3" *ngIf="showOtpForm">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="OTP"
+          formControlName="otp"
+          [class.is-invalid]="otp?.touched && otp?.invalid"
+        />
+        <label>OTP</label>
+      </div>
+
+      <div *ngIf="otp?.touched && otp?.invalid" class="text-danger mb-3">
+        OTP is required!
+      </div>
+
+      <div *ngIf="showOtpForm">
+        <button
+          class="btn btn-primary"
+          type="submit"
+          [disabled]="forgotPasswordForm.invalid"
+        >
+          Verify OTP
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

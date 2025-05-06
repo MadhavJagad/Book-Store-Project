@@ -1,0 +1,128 @@
+// Colors
+$primary-dark: #4e3d2f;
+$secondary-dark: #2c1810;
+$tan: #d2b48c;
+$beige: #e6c795;
+$cream: #f4e9e3;
+
+// Container
+.profile-container {
+  background: $cream;
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+
+  &:hover {
+    transform: scale(1.02);
+  }
+}
+
+// Profile header
+.profile-header {
+  text-align: center;
+  margin-bottom: 40px;
+
+  .profile-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 5px solid $tan;
+    object-fit: cover;
+    transition: transform 0.3s;
+
+    &:hover {
+      transform: rotate(5deg) scale(1.1);
+    }
+  }
+
+  .profile-name {
+    font-size: 28px;
+    color: $primary-dark;
+    margin: 15px 0;
+  }
+
+  .profile-email, .profile-phone {
+    font-size: 18px;
+    color: $secondary-dark;
+
+    i {
+      margin-right: 10px;
+      color: $tan;
+    }
+  }
+}
+
+// Profile details
+.profile-details {
+  background: $tan;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.05);
+
+  .section-title {
+    font-size: 22px;
+    color: $primary-dark;
+    margin-bottom: 20px;
+
+    i {
+      margin-right: 10px;
+    }
+  }
+
+  .detail-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+
+    p {
+      font-size: 18px;
+      color: $secondary-dark;
+      margin: 0;
+
+      strong {
+        color: $primary-dark;
+      }
+    }
+  }
+}
+
+// Actions
+.profile-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+
+  .btn {
+    padding: 12px 25px;
+    font-size: 18px;
+    border: none;
+    border-radius: 6px;
+    transition: background 0.3s, color 0.3s;
+
+    i {
+      margin-right: 8px;
+    }
+  }
+
+  .btn-edit {
+    background: $beige;
+    color: $secondary-dark;
+
+    &:hover {
+      background: $tan;
+      color: $primary-dark;
+    }
+  }
+
+  .btn-logout {
+    background: $secondary-dark;
+    color: #fff;
+
+    &:hover {
+      background: #8b0000;
+    }
+  }
+}

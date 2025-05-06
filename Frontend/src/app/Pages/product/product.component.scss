@@ -1,0 +1,204 @@
+/* products.component.scss */
+// Color Palette
+$dark-brown: #4e3d2f;
+$deep-maroon: #2c1810;
+$light-tan: #d2b48c;
+$golden-tan: #e6c795;
+$soft-cream: #f4e9e3;
+
+.products-container {
+  background-color: $soft-cream;
+  color: $deep-maroon;
+
+  // Products Header
+  .products-header {
+    background: linear-gradient(135deg, $dark-brown 50%, $deep-maroon 100%);
+    padding: 3rem 0;
+
+    .page-title {
+      color: $golden-tan;
+      text-align: center;
+      font-size: 2.5rem;
+    }
+  }
+
+  // Category Sidebar
+  .category-sidebar {
+    background-color: $light-tan;
+    padding: 2rem 1rem;
+    border-radius: 10px;
+
+    .category-title {
+      color: $deep-maroon;
+      margin-bottom: 1.5rem;
+      border-bottom: 2px solid $dark-brown;
+      padding-bottom: 0.5rem;
+    }
+
+    .category-list {
+      list-style: none;
+      padding: 0;
+
+      .category-item {
+        margin-bottom: 0.75rem;
+
+        a {
+          color: $deep-maroon;
+          text-decoration: none;
+          display: flex;
+          align-items: center;
+          transition: all 0.3s ease;
+
+          i {
+            margin-right: 10px;
+            color: $dark-brown;
+          }
+
+          &:hover,
+          &.active {
+            color: $dark-brown;
+            transform: translateX(10px);
+          }
+        }
+      }
+    }
+  }
+
+  // Product Grid
+  .products-grid {
+    .book-card {
+      margin-bottom: 2rem;
+      background-color: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+
+      &:hover {
+        transform: translateY(-10px);
+      }
+
+      .book-image {
+        position: relative;
+        overflow: hidden;
+
+        img {
+          width: 100%;
+          height: 450px;
+          object-fit: cover;
+        }
+
+        .book-overlay {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-color: rgba(0, 0, 0, 0.5);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          opacity: 0;
+          transition: opacity 0.3s ease;
+
+          .btn-view {
+            color: white;
+            background-color: $dark-brown;
+            border: none;
+          }
+        }
+
+        &:hover .book-overlay {
+          opacity: 1;
+        }
+      }
+
+      .book-details {
+        padding: 1rem;
+        text-align: center;
+
+        .book-title {
+          color: $deep-maroon;
+          margin-bottom: 0.5rem;
+        }
+
+        .book-author {
+          color: $dark-brown;
+          margin-bottom: 1rem;
+        }
+
+        .book-pricing {
+          margin-bottom: 1rem;
+
+          .price {
+            color: $deep-maroon;
+            font-weight: bold;
+            margin-right: 10px;
+          }
+
+          .original-price {
+            color: $dark-brown;
+            text-decoration: line-through;
+            font-size: 0.9rem;
+          }
+        }
+
+        .book-actions {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          .btn-add-to-cart {
+            background-color: $dark-brown;
+            color: $soft-cream;
+            margin-right: 10px;
+          }
+
+          .btn-wishlist {
+            background-color: transparent;
+            color: $deep-maroon;
+            border: 2px solid $deep-maroon;
+
+            &:hover {
+              background-color: $deep-maroon;
+              color: $soft-cream;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // Pagination
+  .pagination {
+    margin-top: 2rem;
+
+    .page-item {
+      .page-link {
+        color: $deep-maroon;
+        background-color: $light-tan;
+        border: 1px solid $dark-brown;
+
+        &:hover {
+          background-color: $dark-brown;
+          color: $soft-cream;
+        }
+      }
+
+      &.active .page-link {
+        background-color: $dark-brown;
+        border-color: $deep-maroon;
+        color: $soft-cream;
+      }
+    }
+  }
+}
+
+// Responsive Adjustments
+@media (max-width: 768px) {
+  .products-container {
+    .category-sidebar {
+      margin-bottom: 2rem;
+    }
+  }
+}

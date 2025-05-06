@@ -1,0 +1,209 @@
+<div class="container signup-container">
+  <div class="card shadow-lg">
+    <div class="card-header text-center bg-dark-custom">
+      <h2 class="text-light">
+        <i class="fas fa-user-plus"></i> Create an Account
+      </h2>
+    </div>
+
+    <div class="card-body">
+      <form [formGroup]="userRegisterForm" (ngSubmit)="onSubmit()">
+        <!-- Username -->
+        <div class="form-group mb-3">
+          <label for="username"><i class="fas fa-user"></i> Username</label>
+          <input
+            type="text"
+            class="form-control"
+            id="username"
+            placeholder="Enter your username"
+            formControlName="userName"
+          />
+          <div
+            class="text-danger"
+            *ngIf="userName?.invalid && userName?.touched"
+          >
+            <b *ngIf="userName?.errors?.['required']">Username is required!</b>
+            <b *ngIf="userName?.errors?.['minlength']">
+              Username must be at least 3 characters long!
+            </b>
+          </div>
+        </div>
+        
+        <!-- Email -->
+        <div class="form-group mb-3">
+          <label for="email"><i class="fas fa-envelope"></i> Email</label>
+          <input
+            type="email"
+            class="form-control"
+            id="email"
+            placeholder="Enter your email"
+            formControlName="email"
+          />
+          <div class="text-danger" *ngIf="email?.invalid && email?.touched">
+            <b *ngIf="email?.errors?.['required']">Email is required!</b>
+            <b *ngIf="email?.errors?.['pattern']">Email is invalid!</b>
+          </div>
+        </div>
+
+        <!-- Phone -->
+        <div class="form-group mb-3">
+          <label for="phone"><i class="fas fa-phone"></i> Phone</label>
+          <input
+            type="tel"
+            class="form-control"
+            id="phone"
+            placeholder="Enter your phone number"
+            formControlName="phone"
+          />
+          <div class="text-danger" *ngIf="phone?.invalid && phone?.touched">
+            <b *ngIf="phone?.errors?.['required']">Phone is required!</b>
+          </div>
+        </div>
+
+        <!-- Address -->
+        <div class="form-group mb-3">
+          <label for="address"
+            ><i class="fas fa-map-marker-alt"></i> Address</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            id="address"
+            placeholder="Enter your address"
+            formControlName="address"
+          />
+          <div class="text-danger" *ngIf="address?.invalid && address?.touched">
+            <b *ngIf="address?.errors?.['required']">Address is required!</b>
+          </div>
+        </div>
+
+        <!-- City, State, Zip -->
+        <div class="row">
+          <div class="col-md-4 mb-3">
+            <label for="city"><i class="fas fa-city"></i> City</label>
+            <input
+              type="text"
+              class="form-control"
+              id="city"
+              placeholder="City"
+              formControlName="city"
+            />
+            <div class="text-danger" *ngIf="city?.invalid && city?.touched">
+              <b *ngIf="city?.errors?.['required']">City is required!</b>
+            </div>
+          </div>
+
+          <div class="col-md-4 mb-3">
+            <label for="state"><i class="fas fa-flag"></i> State</label>
+            <input
+              type="text"
+              class="form-control"
+              id="state"
+              placeholder="State"
+              formControlName="state"
+            />
+            <div class="text-danger" *ngIf="state?.invalid && state?.touched">
+              <b *ngIf="state?.errors?.['required']">State is required!</b>
+            </div>
+          </div>
+
+          <div class="col-md-4 mb-3">
+            <label for="zipcode"><i class="fas fa-map-pin"></i> Zipcode</label>
+            <input
+              type="text"
+              class="form-control"
+              id="zipcode"
+              placeholder="Zipcode"
+              formControlName="zipcode"
+            />
+            <div
+              class="text-danger"
+              *ngIf="zipcode?.invalid && zipcode?.touched"
+            >
+              <b *ngIf="zipcode?.errors?.['required']">Zipcode is required!</b>
+              <b *ngIf="zipcode?.errors?.['maxlength']">
+                Zipcode must be 5 characters long!
+              </b>
+            </div>
+          </div>
+        </div>
+
+        <!-- Password -->
+        <div class="form-group mb-3">
+          <label for="password"><i class="fas fa-lock"></i> Password</label>
+          <input
+            type="password"
+            class="form-control"
+            id="password"
+            placeholder="Enter password"
+            formControlName="password"
+          />
+          <div
+            class="text-danger"
+            *ngIf="password?.invalid && password?.touched"
+          >
+            <b *ngIf="password?.errors?.['required']">Password is required!</b>
+            <b *ngIf="password?.errors?.['pattern']"> Invaild Password </b>
+          </div>
+        </div>
+
+        <!-- Confirm Password -->
+        <div class="form-group mb-4">
+          <label for="confirm-password"
+            ><i class="fas fa-lock"></i> Confirm Password</label
+          >
+          <input
+            type="password"
+            class="form-control"
+            id="confirm-password"
+            placeholder="Confirm password"
+            formControlName="confirmPassword"
+          />
+          <div
+            class="text-danger"
+            *ngIf="
+          (confirmPassword?.invalid && confirmPassword?.touched) ||
+          userRegisterForm.errors?.['passwordMismatch']"
+          >
+            <b *ngIf="confirmPassword?.errors?.['required']">
+              Confirm Password is required!
+            </b>
+            <b
+              *ngIf="userRegisterForm.errors?.['passwordMismatch'] && confirmPassword?.touched"
+            >
+              Passwords do not match!
+            </b>
+          </div>
+        </div>
+
+        <!-- Buttons -->
+        <div
+          class="d-grid"
+          [ngStyle]="{
+            cursor: userRegisterForm.valid ? 'pointer' : 'not-allowed'
+          }"
+        >
+          <button
+            type="submit"
+            class="btn btn-custom btn-lg"
+            [disabled]="!userRegisterForm.valid || isSubmitting"
+          >
+            <span *ngIf="!isSubmitting">
+              <i class="fas fa-user-check"></i> Sign Up
+            </span>
+            <span *ngIf="isSubmitting">
+              <i class="fas fa-spinner fa-spin"></i> Registering...
+            </span>
+          </button>
+        </div>
+
+        <div class="text-center mt-3">
+          <p>
+            Already have an account?
+            <a routerLink="/signin" class="text-custom">Login here</a>
+          </p>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

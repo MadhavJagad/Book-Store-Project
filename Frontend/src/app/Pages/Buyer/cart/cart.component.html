@@ -1,0 +1,273 @@
+<div class="shopping-cart-section py-5">
+  <div class="container">
+    <div class="cart-header mb-4">
+      <h2 class="section-title">Your Shopping Cart</h2>
+      <div class="cart-breadcrumb">
+        <ul class="breadcrumb-steps">
+          <li class="step active">
+            <span class="step-number">1</span>
+            <span class="step-label">Shopping Cart</span>
+          </li>
+          <li class="step">
+            <span class="step-number">2</span>
+            <span class="step-label">Checkout</span>
+          </li>
+          <li class="step">
+            <span class="step-number">3</span>
+            <span class="step-label">Order Complete</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-8">
+        <!-- Not logged in message -->
+        <div *ngIf="!userService.isLoggedIn()" class="cart-auth-alert">
+          <div class="alert-icon">
+            <i class="fas fa-user-lock"></i>
+          </div>
+          <div class="alert-content">
+            <h5>Please sign in to view your cart</h5>
+            <p>
+              Sign in to access your shopping cart and complete your purchase.
+            </p>
+            <div class="alert-actions">
+              <button class="btn btn-primary me-2">Sign In</button>
+              <button class="btn btn-outline-secondary">Create Account</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Empty cart message -->
+        <div
+          *ngIf="userService.isLoggedIn() && cartItems.length === 0"
+          class="empty-cart"
+        >
+          <div class="empty-cart-content">
+            <div class="empty-cart-icon">
+              <i class="fas fa-shopping-basket"></i>
+            </div>
+            <h3>Your cart is empty</h3>
+            <p>Looks like you haven't added any books to your cart yet.</p>
+            <button class="btn btn-primary" routerLink="/">
+              <i class="fas fa-arrow-left me-2"></i>Continue Shopping
+            </button>
+          </div>
+
+          <div class="recommended-section mt-5">
+            <h4>Recommended for you</h4>
+            <div class="row row-cols-1 row-cols-md-3 g-4 mt-2">
+              <!-- Sample recommended books - you can replace with actual data -->
+              <div class="col">
+                <div class="recommended-item">
+                  <div class="recommended-img"></div>
+                  <div class="recommended-info">
+                    <h6>The Great Gatsby</h6>
+                    <p class="text-muted small">F. Scott Fitzgerald</p>
+                    <button class="btn btn-sm btn-outline-primary">
+                      Add to Cart
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="recommended-item">
+                  <div class="recommended-img"></div>
+                  <div class="recommended-info">
+                    <h6>To Kill a Mockingbird</h6>
+                    <p class="text-muted small">Harper Lee</p>
+                    <button class="btn btn-sm btn-outline-primary">
+                      Add to Cart
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="recommended-item">
+                  <div class="recommended-img"></div>
+                  <div class="recommended-info">
+                    <h6>1984</h6>
+                    <p class="text-muted small">George Orwell</p>
+                    <button class="btn btn-sm btn-outline-primary">
+                      Add to Cart
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cart items -->
+        <div
+          *ngIf="userService.isLoggedIn() && cartItems.length > 0"
+          class="cart-items"
+        >
+          <div class="cart-items-header d-none d-md-flex">
+            <div class="col-product">Product</div>
+            <div class="col-price">Price</div>
+            <div class="col-quantity">Quantity</div>
+            <div class="col-total">Total</div>
+            <div class="col-action"></div>
+          </div>
+
+          <div *ngFor="let item of cartItems" class="cart-item">
+            <div class="cart-item-main">
+              <div class="item-image">
+                <img
+                  [src]="'data:image/*;base64,' + item.book.image"
+                  alt="{{ item.book.title }}"
+                />
+              </div>
+              <div class="item-details">
+                <h5 class="item-title">{{ item.book.title }}</h5>
+                <p class="item-author">by {{ item.book.author }}</p>
+                <p class="item-category badge">{{ item.book.category }}</p>
+                <div class="item-mobile-price d-md-none">
+                  <span class="label">Price:</span>
+                  <span class="value"
+                    >${{ item.book.price | number : "1.2-2" }}</span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div class="item-price d-none d-md-block">
+              ${{ item.book.price | number : "1.2-2" }}
+            </div>
+
+            <div class="item-quantity">
+              <div class="quantity-control">
+                <button
+                  class="quantity-btn decrease"
+                  (click)="updateQuantity(item.book._id, item.quantity - 1)"
+                  [disabled]="item.quantity <= 1"
+                >
+                  <i class="fas fa-minus"></i>
+                </button>
+                <input
+                  type="number"
+                  class="quantity-input"
+                  [value]="item.quantity"
+                  min="1"
+                  (change)="
+                    updateQuantity(item.book._id, $any($event.target).value)
+                  "
+                />
+                <button
+                  class="quantity-btn increase"
+                  (click)="updateQuantity(item.book._id, item.quantity + 1)"
+                >
+                  <i class="fas fa-plus"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="item-total d-none d-md-block">
+              ${{ item.book.price * item.quantity | number : "1.2-2" }}
+            </div>
+
+            <div class="item-action">
+              <button
+                class="remove-btn"
+                (click)="removeFromCart(item.book._id)"
+              >
+                <i class="fas fa-trash-alt"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="cart-actions">
+            <button class="btn btn-outline-secondary" routerLink="/">
+              <i class="fas fa-arrow-left me-2"></i>Continue Shopping
+            </button>
+            <button class="btn btn-outline-danger" (click)="clearCart()">
+              <i class="fas fa-trash me-2"></i>Clear Cart
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="col-lg-4"
+        *ngIf="userService.isLoggedIn() && cartItems.length > 0"
+      >
+        <div class="order-summary">
+          <h4 class="summary-title">Order Summary</h4>
+
+          <!-- <div class="summary-items">
+            <div class="summary-item">
+              <span class="item-label">Items ({{ getTotalItems() }})</span>
+              <span class="item-value"
+                >${{ getSubtotal() | number : "1.2-2" }}</span
+              >
+            </div>
+            <div class="summary-item">
+              <span class="item-label">Shipping</span>
+              <span class="item-value shipping-value">
+                <span *ngIf="getSubtotal() >= 35">Free</span>
+                <span *ngIf="getSubtotal() < 35"
+                  >${{ 4.99 | number : "1.2-2" }}</span
+                >
+              </span>
+            </div>
+            <div *ngIf="getSubtotal() < 35" class="free-shipping-note">
+              <i class="fas fa-truck me-2"></i>
+              Add ${{ 35 - getSubtotal() | number : "1.2-2" }} more to get FREE
+              shipping
+            </div>
+          </div> -->
+
+          <div class="promo-code">
+            <div class="input-group">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Promo code"
+              />
+              <button class="btn btn-outline-secondary" type="button">
+                Apply
+              </button>
+            </div>
+          </div>
+
+          <!-- <div class="summary-total">
+            <span class="total-label">Total</span>
+            <span class="total-value">
+              ${{
+                (getSubtotal() < 35 ? getSubtotal() + 4.99 : getSubtotal())
+                  | number : "1.2-2"
+              }}
+            </span>
+          </div> -->
+
+          <button class="btn btn-primary checkout-btn" routerLink="/checkout">
+            <i class="fas fa-lock me-2"></i>Proceed to Checkout
+          </button>
+
+          <div class="secure-checkout">
+            <div class="payment-methods">
+              <i class="fab fa-cc-visa"></i>
+              <i class="fab fa-cc-mastercard"></i>
+              <i class="fab fa-cc-amex"></i>
+              <i class="fab fa-cc-paypal"></i>
+            </div>
+            <div class="secure-note">
+              <i class="fas fa-shield-alt me-1"></i>
+              <span>Secure Checkout</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="help-card mt-4">
+          <h5>Need Help?</h5>
+          <p>Our customer service team is available 24/7</p>
+          <a href="/contact-us" class="btn btn-outline-secondary btn-sm">
+            <i class="fas fa-headset me-2"></i>Contact Support
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

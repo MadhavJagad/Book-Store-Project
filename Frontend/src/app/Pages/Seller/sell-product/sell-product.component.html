@@ -1,0 +1,128 @@
+<div class="container">
+  <div class="card p-5 mt-5 border-black">
+    <h1 class="text-center pb-3">Product Form</h1>
+    <form [formGroup]="productForm" (ngSubmit)="submitHandler()">
+      <div class="form-floating mb-3">
+        <input
+          type="text"
+          class="form-control border-black"
+          placeholder=""
+          formControlName="title"
+        />
+        <label>Title</label>
+        <div class="text-danger" *ngIf="title?.touched">
+          <span *ngIf="title?.errors?.['required']"
+            >Title field is required!</span
+          >
+        </div>
+      </div>
+      <div class="form-floating mb-3">
+        <input
+          type="text"
+          class="form-control border-black"
+          placeholder=""
+          formControlName="author"
+        />
+        <label>Author / Publisher</label>
+        <div class="text-danger" *ngIf="author?.touched">
+          <span *ngIf="author?.errors?.['required']"
+            >Author field is required!</span
+          >
+        </div>
+      </div>
+      <div class="mb-3">
+        <!-- <label class="form-label fs-5 pe-2">Category</label> -->
+        <select
+          class="form-select text-center border-black"
+          formControlName="category"
+        >
+          <option value="">---Select Category---</option>
+          <option [value]="item" *ngFor="let item of categoryArr">
+            {{ item }}
+          </option>
+        </select>
+        <div class="text-danger" *ngIf="category?.touched">
+          <span *ngIf="category?.errors?.['required']"
+            >Category field is required!</span
+          >
+        </div>
+      </div>
+      <div class="form-floating mb-3">
+        <input
+          type="tel"
+          class="form-control border-black"
+          placeholder=""
+          formControlName="price"
+        />
+        <label>Price</label>
+        <div class="text-danger" *ngIf="price?.touched">
+          <span *ngIf="price?.errors?.['required']"
+            >Price field is required!</span
+          >
+        </div>
+      </div>
+      <div class="form-floating mb-3">
+        <input
+          type="date"
+          class="form-control border-black"
+          placeholder=""
+          formControlName="publicationYear"
+        />
+        <label class="form-label">Publication Year</label>
+        <div class="text-danger" *ngIf="publicationYear?.touched">
+          <span *ngIf="publicationYear?.errors?.['required']"
+            >Publication year field is required!</span
+          >
+        </div>
+      </div>
+      <div class="form-floating mb-3">
+        <input
+          type="file"
+          class="form-control border-black"
+          (change)="onImageSelected($event)"
+        />
+        <label class="form-label">Image</label>
+        <div class="text-danger" *ngIf="image?.touched">
+          <span *ngIf="image?.errors?.['required']"
+            >Image field is required!</span
+          >
+        </div>
+      </div>
+
+      <div class="form-floating mb-3">
+        <textarea
+          class="form-control border-black"
+          placeholder=""
+          style="height: 100px"
+          formControlName="description"
+        ></textarea>
+        <label>Description...</label>
+        <div class="text-danger" *ngIf="description?.touched">
+          <span *ngIf="description?.errors?.['required']"
+            >Description field is required!</span
+          >
+        </div>
+      </div>
+      <div class="mb-3">
+        <div class="form-check">
+          <input
+            class="form-check-input border-black p-2"
+            type="checkbox"
+            formControlName="condition"
+          />
+          <label class="form-check-label fs-5">
+            I agree to the <span class="text-primary">Terms & Conditions</span>
+          </label>
+          <div class="text-danger" *ngIf="condition?.touched">
+            <span *ngIf="condition?.errors?.['required']"
+              >You must agree to T&C</span
+            >
+          </div>
+        </div>
+      </div>
+      <div class="mt-4">
+        <button type="submit" class="btn btn-success">Submit</button>
+      </div>
+    </form>
+  </div>
+</div>

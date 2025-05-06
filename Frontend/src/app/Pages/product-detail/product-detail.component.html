@@ -1,0 +1,314 @@
+<div class="product-detail-container">
+  <div class="container py-5">
+    <!-- Breadcrumb navigation -->
+    <nav aria-label="breadcrumb" class="mb-4">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">
+          Product Details
+        </li>
+      </ol>
+    </nav>
+
+    <!-- Back button with icon -->
+    <button class="btn btn-outline-secondary mb-4" routerLink="/">
+      <i class="fa-solid fa-arrow-left me-2"></i> Back to Shopping
+    </button>
+
+    <!-- Product details card -->
+    <div class="card product-card shadow-sm border-0" *ngIf="book">
+      <div class="row g-0">
+        <!-- Product image column -->
+        <div class="col-md-5 product-image-container">
+          <div class="image-wrapper">
+            <img
+              [src]="'data:image/jpeg;base64,' + book.image"
+              alt="{{ book.title }}"
+              class="img-fluid rounded product-image"
+            />
+            <span class="category-badge">{{ book.category }}</span>
+          </div>
+        </div>
+
+        <!-- Product info column -->
+        <div class="col-md-7">
+          <div class="card-body product-info p-5">
+            <h1 class="product-title">{{ book.title }}</h1>
+            <p class="author-name text-muted">
+              by <span class="fw-medium">{{ book.author }}</span>
+            </p>
+
+            <div class="rating mb-3">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-regular fa-star"></i>
+              <span class="ms-2 text-muted">(24 reviews)</span>
+            </div>
+
+            <div class="product-price mb-4">
+              <span class="currency">₹</span>
+              <span class="price">{{ book.price }}</span>
+              <span
+                class="original-price text-decoration-line-through text-muted ms-2"
+                >₹{{ book.price * 1.2 | number : "1.0-0" }}</span
+              >
+              <span class="discount-badge ms-2">20% OFF</span>
+            </div>
+
+            <div class="product-meta mb-4">
+              <div class="meta-item">
+                <i class="fa-solid fa-calendar-days me-2"></i>
+                <span class="meta-label">Publication Year:</span>
+                <span class="meta-value">{{ book.publicationYear }}</span>
+              </div>
+              <div class="meta-item">
+                <i class="fa-solid fa-truck me-2"></i>
+                <span class="meta-label">Delivery:</span>
+                <span class="meta-value text-success"
+                  >Free delivery available</span
+                >
+              </div>
+              <div class="meta-item">
+                <i class="fa-solid fa-box-open me-2"></i>
+                <span class="meta-label">Stock:</span>
+                <span class="meta-value text-success">In Stock</span>
+              </div>
+            </div>
+
+            <div class="product-description mb-4">
+              <h5 class="description-title">Description</h5>
+              <p class="description-text">{{ book.description }}</p>
+            </div>
+
+            <div class="quantity-selector mb-4">
+              <label for="quantity" class="form-label">Quantity</label>
+              <div class="input-group quantity-input">
+                <button class="btn btn-outline-secondary" type="button">
+                  <i class="fa-solid fa-minus"></i>
+                </button>
+                <input
+                  type="number"
+                  class="form-control text-center"
+                  id="quantity"
+                  value="1"
+                  min="1"
+                />
+                <button class="btn btn-outline-secondary" type="button">
+                  <i class="fa-solid fa-plus"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="action-buttons">
+              <button
+                class="btn btn-primary btn-add-to-cart"
+                type="button"
+                data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasExample"
+                aria-controls="offcanvasExample"
+                (click)="addToCart(book._id)"
+              >
+                <i class="fa-solid fa-cart-plus me-2"></i> Add to Cart
+              </button>
+              <button type="button" class="btn btn-warning btn-buy-now">
+                <i class="fa-solid fa-bolt me-2"></i> Buy Now
+              </button>
+              <button
+                type="button"
+                class="btn btn-outline-secondary btn-wishlist"
+              >
+                <i class="fa-regular fa-heart"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Cart Offcanvas -->
+<div
+  class="offcanvas offcanvas-end cart-offcanvas"
+  tabindex="-1"
+  id="offcanvasExample"
+  aria-labelledby="offcanvasExampleLabel"
+>
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasExampleLabel">
+      <i class="fa-solid fa-shopping-cart me-2"></i> Your Cart
+    </h5>
+    <button
+      type="button"
+      class="btn-close"
+      data-bs-dismiss="offcanvas"
+      aria-label="Close"
+    ></button>
+  </div>
+  <div class="offcanvas-body">
+    <div *ngIf="!userService.isLoggedIn()" class="alert alert-warning">
+      <i class="fa-solid fa-circle-exclamation me-2"></i> Please login to view
+      your cart
+    </div>
+
+    <div *ngIf="userService.isLoggedIn()">
+      <div *ngIf="cartItems.length === 0" class="empty-cart">
+        <div class="text-center py-5">
+          <i class="fa-solid fa-cart-shopping empty-cart-icon"></i>
+          <p class="mt-3">Your cart is empty</p>
+          <button
+            class="btn btn-outline-primary mt-3"
+            data-bs-dismiss="offcanvas"
+          >
+            Continue Shopping
+          </button>
+        </div>
+      </div>
+
+      <div *ngFor="let item of cartItems" class="cart-item">
+        <div class="d-flex align-items-center">
+          <img
+            [src]="'data:image/*;base64,' + item.book.image"
+            alt="{{ item.book.title }}"
+            class="cart-item-image"
+          />
+          <div class="cart-item-details">
+            <h6 class="cart-item-title">{{ item.book.title }}</h6>
+            <p class="cart-item-price">
+              ₹{{ item.book.price | number : "1.2-2" }}
+            </p>
+            <div class="cart-item-quantity">
+              <button
+                class="quantity-btn"
+                (click)="updateQuantity(item.book._id, item.quantity - 1)"
+                [disabled]="item.quantity <= 1"
+              >
+                <i class="fa-solid fa-minus"></i>
+              </button>
+              <span class="quantity-value">{{ item.quantity }}</span>
+              <button
+                class="quantity-btn"
+                (click)="updateQuantity(item.book._id, item.quantity + 1)"
+              >
+                <i class="fa-solid fa-plus"></i>
+              </button>
+            </div>
+          </div>
+          <button
+            type="button"
+            class="btn-remove"
+            (click)="removeFromCart(item.book._id)"
+          >
+            <i class="fa-solid fa-trash"></i>
+          </button>
+        </div>
+      </div>
+
+      <div *ngIf="cartItems.length > 0" class="cart-summary">
+        <div class="d-flex justify-content-between mb-2">
+          <span>Subtotal</span>
+          <span>₹{{ getTotalPrice() | number : "1.2-2" }}</span>
+        </div>
+        <div class="d-flex justify-content-between mb-2">
+          <span>Shipping</span>
+          <span class="text-success">Free</span>
+        </div>
+        <div class="d-flex justify-content-between fw-bold total-row">
+          <span>Total</span>
+          <span>₹{{ getTotalPrice() | number : "1.2-2" }}</span>
+        </div>
+      </div>
+
+      <div class="cart-actions">
+        <button
+          class="btn btn-primary btn-block"
+          routerLink="/cart"
+          data-bs-dismiss="offcanvas"
+          [disabled]="cartItems.length === 0"
+        >
+          <i class="fa-solid fa-shopping-bag me-2"></i> View Cart
+        </button>
+        <button
+          class="btn btn-success btn-block"
+          [disabled]="cartItems.length === 0"
+        >
+          <i class="fa-solid fa-credit-card me-2"></i> Checkout
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Related Products Section -->
+<section class="related-products py-5">
+  <div class="container">
+    <div class="section-header mb-4">
+      <h3 class="section-title">You May Also Like</h3>
+      <div class="section-divider"></div>
+    </div>
+
+    <!-- Products Carousel -->
+    <div class="row">
+      <!-- Navigation Arrows -->
+      <div class="col-12 d-flex justify-content-end mb-3">
+        <button
+          class="btn btn-sm btn-outline-secondary me-2 carousel-nav-btn"
+          id="prevRelated"
+        >
+          <i class="fa-solid fa-chevron-left"></i>
+        </button>
+        <button
+          class="btn btn-sm btn-outline-secondary carousel-nav-btn"
+          id="nextRelated"
+        >
+          <i class="fa-solid fa-chevron-right"></i>
+        </button>
+      </div>
+
+      <!-- Products Slider -->
+      <div class="col-12">
+        <div class="related-products-slider">
+          <div class="related-product-card" *ngFor="let item of relatedBooks">
+            <div class="card h-100 border-0 shadow-sm">
+              <div class="card-img-container">
+                <img
+                  [src]="'data:image/jpeg;base64,' + item.image"
+                  class="card-img-top"
+                  alt="Book Title"
+                />
+                <div class="hover-overlay">
+                  <button class="btn btn-sm btn-primary quick-view-btn">
+                    <i class="fa-solid fa-eye me-1"></i> Quick View
+                  </button>
+                  <button class="btn btn-sm btn-outline-light add-to-cart-btn">
+                    <i class="fa-solid fa-cart-plus me-1"></i> Add to Cart
+                  </button>
+                </div>
+                <span class="discount-badge">-15%</span>
+              </div>
+              <div class="card-body">
+                <p class="book-category">{{ item.category }}</p>
+                <h5 class="card-title">{{ item.title }}</h5>
+                <p class="book-author">{{ item.author }}</p>
+                <div class="rating small">
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star-half-stroke"></i>
+                  <span class="rating-count">(42)</span>
+                </div>
+                <div class="price-container">
+                  <span class="current-price">₹299</span>
+                  <span class="original-price">{{ item.price }}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

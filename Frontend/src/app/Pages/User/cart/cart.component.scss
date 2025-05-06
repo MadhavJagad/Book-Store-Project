@@ -1,0 +1,138 @@
+// Colors
+$primary-dark: #4e3d2f;
+$secondary-dark: #2c1810;
+$tan: #d2b48c;
+$beige: #e6c795;
+$cream: #f4e9e3;
+
+// Container
+.cart-container {
+  background: $cream;
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  max-width: 1100px;
+  margin: 30px auto;
+}
+
+// Title
+.cart-title {
+  font-size: 32px;
+  color: $primary-dark;
+  margin-bottom: 20px;
+  text-align: center;
+  i {
+    margin-right: 10px;
+  }
+}
+
+// Cart items
+.cart-items {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  .cart-item {
+    display: flex;
+    align-items: center;
+    background: $tan;
+    padding: 20px;
+    border-radius: 8px;
+    transition: transform 0.3s;
+
+    &:hover {
+      transform: scale(1.02);
+    }
+
+    .cart-item-img {
+      width: 100px;
+      height: 140px;
+      object-fit: cover;
+      border-radius: 4px;
+      margin-right: 20px;
+    }
+
+    .cart-item-details {
+      flex-grow: 1;
+
+      .cart-item-title {
+        font-size: 20px;
+        color: $secondary-dark;
+        margin: 0;
+      }
+
+      .cart-item-author {
+        font-size: 16px;
+        color: $primary-dark;
+        margin: 5px 0;
+      }
+
+      .cart-item-price {
+        font-size: 18px;
+        color: $secondary-dark;
+        font-weight: bold;
+      }
+    }
+
+    .cart-item-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      .cart-item-qty {
+        width: 60px;
+        padding: 8px;
+        border: 1px solid $secondary-dark;
+        border-radius: 4px;
+      }
+
+      .btn-remove {
+        background: $secondary-dark;
+        color: #fff;
+        border: none;
+        padding: 10px 12px;
+        border-radius: 4px;
+        transition: background 0.3s;
+
+        &:hover {
+          background: #8b0000;
+        }
+      }
+    }
+  }
+}
+
+// Cart summary
+.cart-summary {
+  margin-top: 30px;
+  text-align: right;
+
+  h4 {
+    font-size: 24px;
+    color: $primary-dark;
+
+    span {
+      font-weight: bold;
+      color: $secondary-dark;
+    }
+  }
+
+  .btn-checkout {
+    background: $beige;
+    color: $secondary-dark;
+    padding: 12px 30px;
+    font-size: 18px;
+    border: none;
+    border-radius: 6px;
+    transition: background 0.3s, color 0.3s;
+
+    i {
+      margin-left: 10px;
+    }
+
+    &:hover {
+      background: $tan;
+      color: $primary-dark;
+    }
+  }
+}

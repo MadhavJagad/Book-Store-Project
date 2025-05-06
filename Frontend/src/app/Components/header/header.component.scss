@@ -1,0 +1,260 @@
+// Variables
+$primary-color: #4f359b; // Deep purple
+$secondary-color: #ff7d50; // Warm orange
+$text-color: #2c2c2c;
+$light-bg: #f8f9fa;
+$dark-text: #212529;
+$header-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+
+// Header Container
+.header-container {
+  background-color: white;
+  box-shadow: $header-shadow;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+a {
+  color: #4f359b;
+}
+
+// Header
+.book-header {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0.5rem 1.5rem;
+}
+
+// Logo
+.logo {
+  font-size: 1.6rem;
+  color: $primary-color;
+  transition: all 0.3s ease;
+
+  &:hover {
+    color: darken($primary-color, 10%);
+    transform: scale(1.02);
+  }
+
+  i {
+    font-size: 1.8rem;
+  }
+
+  .logo-text {
+    font-weight: 700;
+    letter-spacing: -0.5px;
+  }
+}
+
+// Search Box
+.search-container {
+  max-width: 400px;
+  width: 100%;
+  margin: 0 1rem;
+
+  .search-input {
+    border: 1px solid #e0e0e0;
+    border-right: none;
+    padding: 0.5rem 1rem;
+    border-radius: 50px 0 0 50px;
+    transition: all 0.3s ease;
+
+    &:focus {
+      box-shadow: none;
+      border-color: $primary-color;
+    }
+  }
+
+  .search-btn {
+    background-color: $primary-color;
+    color: white;
+    border-radius: 0 50px 50px 0;
+    border: 1px solid $primary-color;
+
+    &:hover {
+      background-color: darken($primary-color, 8%);
+    }
+  }
+}
+
+// Navigation Menu
+.navigation-menu {
+  margin: 0;
+
+  .nav-item {
+    margin: 0 0.2rem;
+
+    .nav-link {
+      color: $dark-text;
+      font-weight: 500;
+      padding: 0.5rem 0.8rem;
+      border-radius: 4px;
+      transition: all 0.2s ease;
+
+      &:hover {
+        color: $primary-color;
+        background-color: rgba($primary-color, 0.05);
+      }
+
+      &.active {
+        color: $primary-color;
+        background-color: rgba($primary-color, 0.1);
+      }
+    }
+  }
+
+  .dropdown-menu {
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    border: none;
+    padding: 0.5rem;
+
+    .dropdown-item {
+      border-radius: 4px;
+      padding: 0.5rem 1rem;
+
+      &:hover {
+        background-color: rgba($primary-color, 0.05);
+        color: $primary-color;
+      }
+    }
+  }
+}
+
+// User Actions (Login/Register)
+.user-actions {
+  display: flex;
+  align-items: center;
+
+  .login-btn {
+    background-color: transparent;
+    border: 1px solid $primary-color;
+    color: $primary-color;
+    border-radius: 50px;
+    padding: 0.4rem 1rem;
+    font-weight: 500;
+
+    &:hover {
+      background-color: rgba($primary-color, 0.05);
+    }
+  }
+
+  .signup-btn {
+    background-color: $primary-color;
+    border: 1px solid $primary-color;
+    color: white;
+    border-radius: 50px;
+    padding: 0.4rem 1rem;
+    font-weight: 500;
+
+    &:hover {
+      background-color: darken($primary-color, 8%);
+    }
+  }
+}
+
+// Logged-in User Actions
+.user-actions-logged {
+  display: flex;
+  align-items: center;
+
+  .nav-link {
+    font-size: 1.2rem;
+    color: $dark-text;
+    padding: 0.5rem;
+    margin: 0 0.3rem;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+
+    &:hover {
+      background-color: rgba($primary-color, 0.1);
+      color: $primary-color;
+    }
+
+    &.active {
+      color: $primary-color;
+    }
+  }
+
+  .cart-link {
+    position: relative;
+
+    .cart-badge {
+      position: absolute;
+      top: -5px;
+      right: -5px;
+      background-color: $secondary-color;
+      color: white;
+      border-radius: 50%;
+      font-size: 0.7rem;
+      width: 18px;
+      height: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  .user-dropdown {
+    font-size: 1.4rem;
+  }
+}
+
+// Responsive Adaptations
+@media (max-width: 992px) {
+  .book-header {
+    padding: 0.5rem 1rem;
+  }
+  .menu-item {
+    display: none;
+  }
+  .navigation-menu {
+    margin-top: 1rem;
+    width: 100%;
+
+    .nav-item {
+      width: 100%;
+      margin: 0.2rem 0;
+    }
+  }
+
+  .search-container {
+    margin: 0.5rem 0;
+    max-width: 100%;
+  }
+
+  .navbar-toggler {
+    padding: 0.5rem;
+    font-size: 1.2rem;
+    color: $primary-color;
+    border: none;
+
+    &:focus {
+      box-shadow: none;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .logo {
+    font-size: 1.4rem;
+
+    i {
+      font-size: 1.6rem;
+    }
+  }
+
+  .user-actions {
+    .login-btn,
+    .signup-btn {
+      padding: 0.3rem 0.8rem;
+      font-size: 0.9rem;
+    }
+  }
+}

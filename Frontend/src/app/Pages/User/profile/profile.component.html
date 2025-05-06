@@ -1,0 +1,65 @@
+<!-- profile.component.html -->
+<div class="profile-container">
+  <!-- Loading State -->
+  <div *ngIf="isLoading" class="loading">
+    <p>Loading your profile...</p>
+  </div>
+
+  <!-- Error State -->
+  <div *ngIf="error" class="error">
+    <p>{{ error }}</p>
+  </div>
+
+  <!-- Profile Data -->
+  <div *ngIf="userData && !isLoading" class="profile-data">
+    <div class="profile-header">
+      <img
+        src="https://via.placeholder.com/150"
+        alt="Profile"
+        class="profile-img"
+      />
+      <h2>{{ userData.userName }}</h2>
+      <p><i class="fas fa-envelope"></i> {{ userData.email }}</p>
+      <p *ngIf="userData.phone">
+        <i class="fas fa-phone"></i> {{ userData.phone }}
+      </p>
+    </div>
+
+    <div class="profile-details">
+      <h3>Personal Information</h3>
+
+      <div class="detail-group">
+        <div class="detail-item">
+          <strong>Username:</strong> {{ userData.userName }}
+        </div>
+        <div class="detail-item">
+          <strong>Email:</strong> {{ userData.email }}
+        </div>
+      </div>
+
+      <div class="detail-group" *ngIf="userData.phone || userData.address">
+        <div class="detail-item" *ngIf="userData.phone">
+          <strong>Phone:</strong> {{ userData.phone }}
+        </div>
+        <div class="detail-item" *ngIf="userData.address">
+          <strong>Address:</strong> {{ userData.address }}
+        </div>
+      </div>
+
+      <div
+        class="detail-group"
+        *ngIf="userData.city || userData.state || userData.zipcode"
+      >
+        <div class="detail-item" *ngIf="userData.city">
+          <strong>City:</strong> {{ userData.city }}
+        </div>
+        <div class="detail-item" *ngIf="userData.state">
+          <strong>State:</strong> {{ userData.state }}
+        </div>
+        <div class="detail-item" *ngIf="userData.zipcode">
+          <strong>Zip Code:</strong> {{ userData.zipcode }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

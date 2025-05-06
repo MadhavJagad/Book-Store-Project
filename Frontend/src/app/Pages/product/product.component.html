@@ -1,0 +1,384 @@
+<!-- products.component.html -->
+<div class="products-container">
+  <section class="products-header">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <h1 class="page-title">Our Book Collection</h1>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="products-content">
+    <div class="container-fluid">
+      <div class="row">
+        <!-- Category Sidebar -->
+        <div class="col-md-3 category-sidebar">
+          <div class="category-section">
+            <h3 class="category-title">Book Categories</h3>
+            <ul class="category-list">
+              <li class="category-item active">
+                <a href="#" data-category="all">
+                  <i class="fas fa-book"></i> All Books
+                </a>
+              </li>
+              <li class="category-item">
+                <a href="#" data-category="fiction">
+                  <i class="fas fa-magic"></i> Fiction
+                </a>
+              </li>
+              <li class="category-item">
+                <a href="#" data-category="non-fiction">
+                  <i class="fas fa-graduation-cap"></i> Non-Fiction
+                </a>
+              </li>
+              <li class="category-item">
+                <a href="#" data-category="mystery">
+                  <i class="fas fa-search"></i> Mystery
+                </a>
+              </li>
+              <li class="category-item">
+                <a href="#" data-category="science-fiction">
+                  <i class="fas fa-rocket"></i> Science Fiction
+                </a>
+              </li>
+              <li class="category-item">
+                <a href="#" data-category="children">
+                  <i class="fas fa-child"></i> Children's Books
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Product Grid -->
+        <div class="col-md-9 products-grid">
+          <h2 class="text-center fs-2 fw-bold text-uppercase mt-3">Popular Books</h2>
+          <div class="row my-5">
+            <!-- Product Card Template (will be repeated) -->
+            <!-- 1 -->
+            <div class="col-lg-4 col-md-6 product-card" data-category="fiction">
+              <div class="book-card">
+                <div class="book-image">
+                  <img
+                    src="https://cdn.venngage.com/template/thumbnail/310/39198110-3724-4046-972c-b4e4088926d9.webp"
+                    alt="Book Title"
+                  />
+                  <div class="book-overlay">
+                    <button class="btn btn-view">
+                      <i class="fas fa-eye"></i> View Book
+                    </button>
+                  </div>
+                </div>
+                <div class="book-details">
+                  <h3 class="book-title">The Midnight Library</h3>
+                  <p class="book-author">Matt Haig</p>
+                  <div class="book-pricing">
+                    <span class="price">$14.99</span>
+                    <span class="original-price">$19.99</span>
+                  </div>
+                  <div class="book-actions">
+                    <button class="btn btn-add-to-cart">
+                      <i class="fas fa-shopping-cart"></i> Add to Cart
+                    </button>
+                    <button class="btn btn-wishlist">
+                      <i class="fas fa-heart"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- 2 -->
+            <div class="col-lg-4 col-md-6 product-card" data-category="fiction">
+              <div class="book-card">
+                <div class="book-image">
+                  <img
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsNrT2TOLleq9et26oRPsNqUx6tNXDe6zcd7QlS-6tveegUciyb1PSHN5r76LrKheD9Qs&usqp=CAU"
+                    alt="Book Title"
+                  />
+                  <div class="book-overlay">
+                    <button class="btn btn-view">
+                      <i class="fas fa-eye"></i> View Book
+                    </button>
+                  </div>
+                </div>
+                <div class="book-details">
+                  <h3 class="book-title">The Midnight Library</h3>
+                  <p class="book-author">Matt Haig</p>
+                  <div class="book-pricing">
+                    <span class="price">$14.99</span>
+                    <span class="original-price">$19.99</span>
+                  </div>
+                  <div class="book-actions">
+                    <button class="btn btn-add-to-cart">
+                      <i class="fas fa-shopping-cart"></i> Add to Cart
+                    </button>
+                    <button class="btn btn-wishlist">
+                      <i class="fas fa-heart"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- 3 -->
+            <div class="col-lg-4 col-md-6 product-card" data-category="fiction">
+              <div class="book-card">
+                <div class="book-image">
+                  <img
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwfv0uG5tGyQVs7ygF_v8m6ggH7gDwfXlSTAU-i5_iRYpQV3WzfSbsVuBYS61Hap82dxA&usqp=CAU"
+                    alt="Book Title"
+                  />
+                  <div class="book-overlay">
+                    <button class="btn btn-view">
+                      <i class="fas fa-eye"></i> View Book
+                    </button>
+                  </div>
+                </div>
+                <div class="book-details">
+                  <h3 class="book-title">The Midnight Library</h3>
+                  <p class="book-author">Matt Haig</p>
+                  <div class="book-pricing">
+                    <span class="price">$14.99</span>
+                    <span class="original-price">$19.99</span>
+                  </div>
+                  <div class="book-actions">
+                    <button class="btn btn-add-to-cart">
+                      <i class="fas fa-shopping-cart"></i> Add to Cart
+                    </button>
+                    <button class="btn btn-wishlist">
+                      <i class="fas fa-heart"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- 4 -->
+            <div class="col-lg-4 col-md-6 product-card" data-category="fiction">
+              <div class="book-card">
+                <div class="book-image">
+                  <img
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRtcbbO46frb0foIy5iyuM_ONEHS3o-ONEaMaAiIc8VfqAezgZ68rcYaz9s4ARLabbriVE&usqp=CAU"
+                    alt="Book Title"
+                  />
+                  <div class="book-overlay">
+                    <button class="btn btn-view">
+                      <i class="fas fa-eye"></i> View Book
+                    </button>
+                  </div>
+                </div>
+                <div class="book-details">
+                  <h3 class="book-title">The Midnight Library</h3>
+                  <p class="book-author">Matt Haig</p>
+                  <div class="book-pricing">
+                    <span class="price">$14.99</span>
+                    <span class="original-price">$19.99</span>
+                  </div>
+                  <div class="book-actions">
+                    <button class="btn btn-add-to-cart">
+                      <i class="fas fa-shopping-cart"></i> Add to Cart
+                    </button>
+                    <button class="btn btn-wishlist">
+                      <i class="fas fa-heart"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- 5 -->
+            <div class="col-lg-4 col-md-6 product-card" data-category="fiction">
+              <div class="book-card">
+                <div class="book-image">
+                  <img
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTm5EwXoGMShSR0iz_EY3BXEFR2la0qs1PudjdCePrXVDKpAxdh2k5l64ACNHCoIqR3tUo&usqp=CAU"
+                    alt="Book Title"
+                  />
+                  <div class="book-overlay">
+                    <button class="btn btn-view">
+                      <i class="fas fa-eye"></i> View Book
+                    </button>
+                  </div>
+                </div>
+                <div class="book-details">
+                  <h3 class="book-title">The Midnight Library</h3>
+                  <p class="book-author">Matt Haig</p>
+                  <div class="book-pricing">
+                    <span class="price">$14.99</span>
+                    <span class="original-price">$19.99</span>
+                  </div>
+                  <div class="book-actions">
+                    <button class="btn btn-add-to-cart">
+                      <i class="fas fa-shopping-cart"></i> Add to Cart
+                    </button>
+                    <button class="btn btn-wishlist">
+                      <i class="fas fa-heart"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- 6 -->
+            <div class="col-lg-4 col-md-6 product-card" data-category="fiction">
+              <div class="book-card">
+                <div class="book-image">
+                  <img
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTdPXkV3d0ypfFB31McPAmEQkK-gU4KJ31e4z_1EfSYQZTUu-UghXRagu_S8wF65waxJk&usqp=CAU"
+                    alt="Book Title"
+                  />
+                  <div class="book-overlay">
+                    <button class="btn btn-view">
+                      <i class="fas fa-eye"></i> View Book
+                    </button>
+                  </div>
+                </div>
+                <div class="book-details">
+                  <h3 class="book-title">The Midnight Library</h3>
+                  <p class="book-author">Matt Haig</p>
+                  <div class="book-pricing">
+                    <span class="price">$14.99</span>
+                    <span class="original-price">$19.99</span>
+                  </div>
+                  <div class="book-actions">
+                    <button class="btn btn-add-to-cart">
+                      <i class="fas fa-shopping-cart"></i> Add to Cart
+                    </button>
+                    <button class="btn btn-wishlist">
+                      <i class="fas fa-heart"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- 7 -->
+            <div class="col-lg-4 col-md-6 product-card" data-category="fiction">
+              <div class="book-card">
+                <div class="book-image">
+                  <img
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1zY0JrQZDRLMY704eho3DRYf5yz6-_DJnJgUfcPa-Gec4I8HSI4S_TcbcyhXg76lZa4A&usqp=CAU"
+                    alt="Book Title"
+                  />
+                  <div class="book-overlay">
+                    <button class="btn btn-view">
+                      <i class="fas fa-eye"></i> View Book
+                    </button>
+                  </div>
+                </div>
+                <div class="book-details">
+                  <h3 class="book-title">The Midnight Library</h3>
+                  <p class="book-author">Matt Haig</p>
+                  <div class="book-pricing">
+                    <span class="price">$14.99</span>
+                    <span class="original-price">$19.99</span>
+                  </div>
+                  <div class="book-actions">
+                    <button class="btn btn-add-to-cart">
+                      <i class="fas fa-shopping-cart"></i> Add to Cart
+                    </button>
+                    <button class="btn btn-wishlist">
+                      <i class="fas fa-heart"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- 8 -->
+            <div class="col-lg-4 col-md-6 product-card" data-category="fiction">
+              <div class="book-card">
+                <div class="book-image">
+                  <img
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7xu5g2Uge_AJpvJOPbtTswFGNug2D4hmZpcGAtKhetEqn_Q3Nvytn3kTlG8SLNdN4sFI&usqp=CAU"
+                    alt="Book Title"
+                  />
+                  <div class="book-overlay">
+                    <button class="btn btn-view">
+                      <i class="fas fa-eye"></i> View Book
+                    </button>
+                  </div>
+                </div>
+                <div class="book-details">
+                  <h3 class="book-title">The Midnight Library</h3>
+                  <p class="book-author">Matt Haig</p>
+                  <div class="book-pricing">
+                    <span class="price">$14.99</span>
+                    <span class="original-price">$19.99</span>
+                  </div>
+                  <div class="book-actions">
+                    <button class="btn btn-add-to-cart">
+                      <i class="fas fa-shopping-cart"></i> Add to Cart
+                    </button>
+                    <button class="btn btn-wishlist">
+                      <i class="fas fa-heart"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Repeat similar product cards for multiple books -->
+            <div
+              class="col-lg-4 col-md-6 product-card"
+              data-category="non-fiction"
+            >
+              <div class="book-card">
+                <div class="book-image">
+                  <img
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYPWeD39E8uaxopLMaNJOZxBQM5Qkzfr4flIcRZO7uPCnl-zCPqy2M4wfVLLEjjdvoum0&usqp=CAU"
+                    alt="Book Title"
+                  />
+                  <div class="book-overlay">
+                    <button class="btn btn-view">
+                      <i class="fas fa-eye"></i> View Book
+                    </button>
+                  </div>
+                </div>
+                <div class="book-details">
+                  <h3 class="book-title">Atomic Habits</h3>
+                  <p class="book-author">James Clear</p>
+                  <div class="book-pricing">
+                    <span class="price">$16.99</span>
+                    <span class="original-price">$22.99</span>
+                  </div>
+                  <div class="book-actions">
+                    <button class="btn btn-add-to-cart">
+                      <i class="fas fa-shopping-cart"></i> Add to Cart
+                    </button>
+                    <button class="btn btn-wishlist">
+                      <i class="fas fa-heart"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Add more product cards here -->
+          </div>
+
+          <!-- Pagination -->
+          <div class="row">
+            <div class="col-12">
+              <nav aria-label="Book collection navigation">
+                <ul class="pagination justify-content-center">
+                  <li class="page-item disabled">
+                    <a class="page-link" href="#" tabindex="-1">Previous</a>
+                  </li>
+                  <li class="page-item active">
+                    <a class="page-link" href="#">1</a>
+                  </li>
+                  <li class="page-item">
+                    <a class="page-link" href="#">2</a>
+                  </li>
+                  <li class="page-item">
+                    <a class="page-link" href="#">3</a>
+                  </li>
+                  <li class="page-item">
+                    <a class="page-link" href="#">Next</a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

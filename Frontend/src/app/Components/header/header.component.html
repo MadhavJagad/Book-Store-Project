@@ -1,0 +1,209 @@
+<div class="header-container">
+  <header
+    class="book-header d-flex flex-wrap align-items-center justify-content-between py-3"
+  >
+    <div class="col-md-3 mb-2 mb-md-0">
+      <a
+        href="/"
+        class="logo d-inline-flex align-items-center text-decoration-none"
+      >
+        <i class="fa-solid fa-book-open me-2"></i>
+        <span class="logo-text">BookHaven</span>
+      </a>
+    </div>
+    <div class="menu-item">
+      <ul class="nav nav-pills navigation-menu">
+        <li class="nav-item">
+          <a
+            routerLink="/"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            class="nav-link"
+          >
+            <i class="fa-solid fa-house-chimney me-1"></i> Home
+          </a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/books" routerLinkActive="active" class="nav-link">
+            <i class="fa-solid fa-book me-1"></i> Books
+          </a>
+        </li>
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            data-bs-toggle="dropdown"
+            href="#"
+            role="button"
+          >
+            <i class="fa-solid fa-tags me-1"></i> Categories
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Fiction</a></li>
+            <li><a class="dropdown-item" href="#">Non-Fiction</a></li>
+            <li><a class="dropdown-item" href="#">Children's</a></li>
+            <li><a class="dropdown-item" href="#">Academic</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/about-us" routerLinkActive="active" class="nav-link">
+            <i class="fa-solid fa-circle-info me-1"></i> About
+          </a>
+        </li>
+        <li class="nav-item">
+          <a
+            routerLink="/contact-us"
+            routerLinkActive="active"
+            class="nav-link"
+          >
+            <i class="fa-solid fa-envelope me-1"></i> Contact
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- <div class="search-container d-none d-md-flex">
+      <div class="input-group">
+        <input
+          type="text"
+          class="form-control search-input"
+          placeholder="Search for books..."
+        />
+        <button class="btn search-btn" type="button">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+      </div>
+    </div>
+   
+      <i class="fa-solid fa-bars"></i>
+    </button> -->
+
+    <div class="user-actions" *ngIf="!isLoggedIn(); else loggedInButtons">
+      <a routerLink="/login" class="btn login-btn me-2">
+        <i class="fa-solid fa-right-to-bracket me-1"></i> Login
+      </a>
+      <a routerLink="/register" class="btn signup-btn">
+        <i class="fa-solid fa-user-plus me-1"></i> Sign up
+      </a>
+    </div>
+
+    <ng-template #loggedInButtons>
+      <div class="user-actions-logged">
+        <ul class="nav align-items-center">
+          <li class="nav-item" *ngIf="getUserType() === 'buyer'">
+            <a
+              class="nav-link cart-link position-relative"
+              routerLink="/cart"
+              routerLinkActive="active"
+            >
+              <i class="fa-solid fa-shopping-cart"></i>
+              <span class="cart-badge" *ngIf="cartItems.length > 0">
+                {{ cartItems.length || 0 }}
+              </span>
+            </a>
+          </li>
+          <li class="nav-item" *ngIf="getUserType() === 'buyer'">
+            <a class="nav-link favorite-link" routerLink="/favorites">
+              <i class="fa-solid fa-heart"></i>
+            </a>
+          </li>
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle user-dropdown"
+              href="#"
+              role="button"
+              data-bs-toggle="dropdown"
+            >
+              <i class="fa-solid fa-circle-user"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end">
+              <li *ngIf="getUserType() === 'buyer'">
+                <a class="dropdown-item" routerLink="/buyer-profile">
+                  <i class="fa-solid fa-user me-2"></i> My Profile
+                </a>
+              </li>
+              <li *ngIf="getUserType() === 'seller'">
+                <a class="dropdown-item" routerLink="/seller-profile">
+                  <i class="fa-solid fa-user me-2"></i> My Profile
+                </a>
+              </li>
+              <li *ngIf="getUserType() === 'seller'">
+                <a class="dropdown-item" routerLink="/sell-product">
+                  <i class="fa-solid fa-upload me-2"></i> Sell Books
+                </a>
+              </li>
+              <li *ngIf="getUserType() === 'buyer'">
+                <a class="dropdown-item" routerLink="/orders">
+                  <i class="fa-solid fa-box me-2"></i> My Orders
+                </a>
+              </li>
+              <li><hr class="dropdown-divider" /></li>
+              <li>
+                <a class="dropdown-item" (click)="logout()">
+                  <i class="fa-solid fa-sign-out-alt me-2"></i> Logout
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </ng-template>
+
+    <button
+      class="navbar-toggler d-md-none"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarCollapse"
+    >
+      <i class="fa-solid fa-bars"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="nav nav-pills navigation-menu">
+        <li class="nav-item">
+          <a
+            routerLink="/"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            class="nav-link"
+          >
+            <i class="fa-solid fa-house-chimney me-1"></i> Home
+          </a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/books" routerLinkActive="active" class="nav-link">
+            <i class="fa-solid fa-book me-1"></i> Books
+          </a>
+        </li>
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            data-bs-toggle="dropdown"
+            href="#"
+            role="button"
+          >
+            <i class="fa-solid fa-tags me-1"></i> Categories
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Fiction</a></li>
+            <li><a class="dropdown-item" href="#">Non-Fiction</a></li>
+            <li><a class="dropdown-item" href="#">Children's</a></li>
+            <li><a class="dropdown-item" href="#">Academic</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/about-us" routerLinkActive="active" class="nav-link">
+            <i class="fa-solid fa-circle-info me-1"></i> About
+          </a>
+        </li>
+        <li class="nav-item">
+          <a
+            routerLink="/contact-us"
+            routerLinkActive="active"
+            class="nav-link"
+          >
+            <i class="fa-solid fa-envelope me-1"></i> Contact
+          </a>
+        </li>
+      </ul>
+    </div>
+  </header>
+</div>

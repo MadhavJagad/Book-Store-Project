@@ -1,0 +1,175 @@
+<div class="profile-container">
+  <div class="container py-5">
+    <div class="row">
+      <div class="col-lg-4 mb-4 mb-lg-0">
+        <div class="profile-sidebar">
+          <div class="profile-avatar">
+            <div class="avatar-circle">
+              <span class="initials">{{ userData.user.userName.substring(0, 2) }}</span>
+            </div>
+          </div>
+          <h2 class="profile-name">{{ userData.user.userName }}</h2>
+          <p class="profile-status">Book Enthusiast</p>
+          <div class="profile-stats">
+            <div class="stat-item">
+              <span class="stat-number">24</span>
+              <span class="stat-label">Orders</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">8</span>
+              <span class="stat-label">Reviews</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">3</span>
+              <span class="stat-label">Wishlists</span>
+            </div>
+          </div>
+          <div class="profile-quote">
+            <i class="fas fa-quote-left quote-icon"></i>
+            <p>"Books are a uniquely portable magic."</p>
+            <span class="quote-author">— Stephen King</span>
+          </div>
+          <div class="profile-actions">
+            <button class="btn btn-primary btn-block" routerLink="/update-password">
+              <i class="fas fa-lock me-2"></i>Change Password
+            </button>
+            <button class="btn btn-outline-danger btn-block" (click)="logout()">
+              <i class="fas fa-sign-out-alt me-2"></i>Logout
+            </button>
+            <button class="btn btn-danger btn-block btn-sm mt-4" (click)="DeleteAccount()">
+              <i class="fas fa-trash-alt me-2"></i>Delete Account
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-8">
+        <div class="profile-content">
+          <div class="profile-header">
+            <h3 class="section-title">Personal Information</h3>
+            <button 
+              [class]="userInput ? 'btn btn-save' : 'btn btn-edit'" 
+              (click)="editHandler()">
+              <i [class]="userInput ? 'fas fa-check me-2' : 'fas fa-pen me-2'"></i>
+              {{ userInput ? "Save Changes" : "Edit Profile" }}
+            </button>
+          </div>
+          
+          <div class="profile-info">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="info-group">
+                  <label>Email Address</label>
+                  <div *ngIf="!userInput" class="info-value">
+                    <i class="fas fa-envelope info-icon"></i>
+                    {{ userData?.user.email }}
+                  </div>
+                  <div *ngIf="userInput" class="info-input">
+                    <input type="email" class="form-control" value="{{ userData?.user.email }}" />
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="info-group">
+                  <label>Contact Number</label>
+                  <div *ngIf="!userInput" class="info-value">
+                    <i class="fas fa-phone info-icon"></i>
+                    {{ userData?.user.phone }}
+                  </div>
+                  <div *ngIf="userInput" class="info-input">
+                    <input type="text" class="form-control" value="{{ userData?.user.phone }}" />
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="info-group">
+              <label>Address</label>
+              <div *ngIf="!userInput" class="info-value">
+                <i class="fas fa-home info-icon"></i>
+                {{ userData?.user.address }}
+              </div>
+              <div *ngIf="userInput" class="info-input">
+                <input type="text" class="form-control" value="{{ userData?.user.address }}" />
+              </div>
+            </div>
+            
+            <div class="row">
+              <div class="col-md-4">
+                <div class="info-group">
+                  <label>City</label>
+                  <div *ngIf="!userInput" class="info-value">
+                    <i class="fas fa-city info-icon"></i>
+                    {{ userData?.user.city }}
+                  </div>
+                  <div *ngIf="userInput" class="info-input">
+                    <input type="text" class="form-control" value="{{ userData?.user.city }}" />
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="info-group">
+                  <label>State</label>
+                  <div *ngIf="!userInput" class="info-value">
+                    <i class="fas fa-map-marker-alt info-icon"></i>
+                    {{ userData?.user.state }}
+                  </div>
+                  <div *ngIf="userInput" class="info-input">
+                    <input type="text" class="form-control" value="{{ userData?.user.state }}" />
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="info-group">
+                  <label>Zip Code</label>
+                  <div *ngIf="!userInput" class="info-value">
+                    <i class="fas fa-mail-bulk info-icon"></i>
+                    {{ userData?.user.zip }}
+                  </div>
+                  <div *ngIf="userInput" class="info-input">
+                    <input type="text" class="form-control" value="{{ userData?.user.zip }}" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="recent-activity">
+            <h3 class="section-title">Recent Activity</h3>
+            <div class="activity-timeline">
+              <div class="activity-item">
+                <div class="activity-icon">
+                  <i class="fas fa-shopping-bag"></i>
+                </div>
+                <div class="activity-content">
+                  <h5>Order Placed</h5>
+                  <p>You ordered "The Midnight Library" by Matt Haig</p>
+                  <span class="activity-date">April 3, 2025</span>
+                </div>
+              </div>
+              <div class="activity-item">
+                <div class="activity-icon">
+                  <i class="fas fa-star"></i>
+                </div>
+                <div class="activity-content">
+                  <h5>Review Posted</h5>
+                  <p>You gave 5 stars to "Klara and the Sun" by Kazuo Ishiguro</p>
+                  <span class="activity-date">March 27, 2025</span>
+                </div>
+              </div>
+              <div class="activity-item">
+                <div class="activity-icon">
+                  <i class="fas fa-heart"></i>
+                </div>
+                <div class="activity-content">
+                  <h5>Added to Wishlist</h5>
+                  <p>You added "Project Hail Mary" by Andy Weir to your wishlist</p>
+                  <span class="activity-date">March 15, 2025</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

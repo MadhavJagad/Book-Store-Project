@@ -1,0 +1,177 @@
+<div class="register-container container py-5">
+  <div class="text-center mb-4">
+    <i class="fas fa-book-reader fa-3x icon"></i>
+    <h1 class="mt-2">Join BookVerse</h1>
+    <p class="lead text-muted">
+      Create your account and start your reading journey!
+    </p>
+  </div>
+  <div class="card shadow-lg p-4 rounded-4 register-card">
+    <form (submit)="submitHandler()" [formGroup]="userForm" novalidate>
+      <div class="row g-3">
+        <div class="col-md-6">
+          <div class="form-floating">
+            <input
+              type="text"
+              class="form-control"
+              formControlName="userName"
+              placeholder="User Name"
+            />
+            <label>User Name</label>
+            <div class="form-error" *ngIf="userName?.touched">
+              <span *ngIf="userName?.errors?.['required']"
+                >User name is required!</span
+              >
+              <span *ngIf="userName?.errors?.['minlength']"
+                >Minimum length is required!</span
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="form-floating">
+            <input
+              type="email"
+              class="form-control"
+              formControlName="email"
+              placeholder="Email"
+            />
+            <label>Email</label>
+            <div class="form-error" *ngIf="email?.touched">
+              <span *ngIf="email?.errors?.['required']"
+                >Email is required!</span
+              >
+              <span *ngIf="email?.errors?.['pattern']"
+                >Invalid email format!</span
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="form-floating">
+            <input
+              type="tel"
+              class="form-control"
+              formControlName="phone"
+              placeholder="Contact Number"
+            />
+            <label>Contact Number</label>
+            <div class="form-error" *ngIf="phone?.touched">
+              <span *ngIf="phone?.errors?.['required']"
+                >Phone number is required!</span
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="form-floating">
+            <input
+              type="text"
+              class="form-control"
+              formControlName="state"
+              placeholder="State"
+            />
+            <label>State</label>
+            <div class="form-error" *ngIf="state?.touched">
+              <span *ngIf="state?.errors?.['required']"
+                >State is required!</span
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="form-floating">
+            <input
+              type="text"
+              class="form-control"
+              formControlName="zip"
+              placeholder="Zip Code"
+            />
+            <label>Zip Code</label>
+            <div class="form-error" *ngIf="zip?.touched">
+              <span *ngIf="zip?.errors?.['required']"
+                >Zip code is required!</span
+              >
+              <span *ngIf="zip?.errors?.['maxlength']"
+                >Maximum length is required!</span
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="form-floating">
+            <select class="form-select" formControlName="city">
+              <option value="" disabled>Select City</option>
+              <option *ngFor="let city of cities" [value]="city">
+                {{ city }}
+              </option>
+            </select>
+            <label>Select City</label>
+            <div class="form-error" *ngIf="city?.touched">
+              <span *ngIf="city?.errors?.['required']">City is required!</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12">
+          <div class="form-floating">
+            <textarea
+              class="form-control"
+              style="height: 100px"
+              placeholder="Address"
+              formControlName="address"
+            ></textarea>
+            <label>Address</label>
+            <div class="form-error" *ngIf="address?.touched">
+              <span *ngIf="address?.errors?.['required']"
+                >Address is required!</span
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12">
+          <div class="form-floating">
+            <input
+              type="password"
+              class="form-control"
+              formControlName="password"
+              placeholder="Password"
+            />
+            <label>Password</label>
+            <div class="form-error" *ngIf="password?.touched">
+              <span *ngIf="password?.errors?.['required']"
+                >Password is required!</span
+              >
+              <span *ngIf="password?.errors?.['pattern']"
+                >Invalid Password</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="d-grid mt-4">
+        <button
+          [ngStyle]="{
+            cursor: userForm.valid ? 'pointer' : 'not-allowed'
+          }"
+          class="btn btn-primary btn-lg"
+          [disabled]="isSubmitting || userForm.invalid"
+        >
+          <i class="fas fa-user-plus me-2"></i
+          >{{ isSubmitting ? "Registering..." : "Register" }}
+        </button>
+      </div>
+
+      <div class="text-center mt-3">
+        <small>Already have an account? <a href="/login">Sign In</a></small>
+      </div>
+    </form>
+  </div>
+</div>

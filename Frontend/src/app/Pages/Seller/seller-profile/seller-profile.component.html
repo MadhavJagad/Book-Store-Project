@@ -1,0 +1,92 @@
+<div class="container my-5">
+  <div class="d-flex gap-5 p-4 align-items-center rounded-3 border shadow-lg">
+    <div class="p-3 p-lg-5 pt-lg-3">
+      <h1 class="display-4 fw-bold lh-1 text-body-emphasis">
+        {{ userData.user.userName }}
+      </h1>
+      <div class="lead pt-3 pb-3">
+        <div><strong>Email:</strong> {{ userData.user.email }}</div>
+        <div *ngIf="userInput" class="mb-3">
+          <input type="text" value="{{ userData.user.email }}" />
+        </div>
+
+        <div><strong>Contact Number:</strong> {{ userData.user.phone }}</div>
+        <div *ngIf="userInput" class="mb-3">
+          <input type="text" value="{{ userData.user.phone }}" />
+        </div>
+
+        <div><strong>Address:</strong> {{ userData.user.address }}</div>
+        <div *ngIf="userInput" class="mb-3">
+          <input type="text" value="{{ userData.user.address }}" />
+        </div>
+
+        <div><strong>City:</strong> {{ userData.user.city }}</div>
+        <div *ngIf="userInput" class="mb-3">
+          <input type="text" value="{{ userData.user.city }}" />
+        </div>
+
+        <div><strong>State:</strong> {{ userData.user.state }}</div>
+        <div *ngIf="userInput" class="mb-3">
+          <input type="text" value="{{ userData.user.state }}" />
+        </div>
+
+        <div><strong>Zip:</strong> {{ userData.user.zip }}</div>
+        <div *ngIf="userInput" class="mb-3">
+          <input type="text" value="{{ userData.user.zip }}" />
+        </div>
+      </div>
+      <!-- <div class="d-grid gap-2 d-md-flex justify-content-md-start mb-4 mb-lg-3">
+          <button
+            type="button"
+            class="btn btn-primary me-md-2 fw-bold"
+            routerLink="/update-password"
+          >
+            
+          </button>
+          <button
+            type="button"
+            [class]="
+              userInput ? 'btn btn-outline-success' : 'btn btn-outline-secondary'
+            "
+            (click)="editHandler()"
+          >
+            {{ userInput ? "Save" : "Edit" }}
+          </button>
+  
+          <button class="btn btn-danger" (click)="logout()">Logout</button>
+        </div> -->
+      <div class="d-grid gap-2 mt-3">
+        <button
+          class="btn btn-outline-primary"
+          type="button"
+          routerLink="/update-password"
+        >
+          Change Password
+        </button>
+        <button
+          [class]="
+            userInput ? 'btn btn-outline-success' : 'btn btn-outline-secondary'
+          "
+          (click)="editHandler()"
+          type="button"
+        >
+          {{ userInput ? "Save" : "Edit" }}
+        </button>
+        <button class="btn btn-outline-danger" (click)="logout()">
+          Logout
+        </button>
+        <button class="btn btn-danger" (click)="DeleteAccount()">
+          Delete Account
+        </button>
+      </div>
+    </div>
+    <div class="p-3 overflow-hidden shadow-lg">
+      <img
+        class="rounded-lg-3"
+        src="https://images.unsplash.com/photo-1590298566288-0f4c0e05807d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzJ8fGJvb2slMjBxdW90ZXN8ZW58MHwxfDB8fHww"
+        alt=""
+        width="720"
+      />
+    </div>
+  </div>
+</div>

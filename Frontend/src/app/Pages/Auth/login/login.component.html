@@ -1,0 +1,80 @@
+<div class="container" style="height: 60vh">
+  <div class="mb-3">
+    <p class="text-primary text-center">Welcome Back...!</p>
+    <h2 class="text-center">Login Form</h2>
+  </div>
+  <div class="p-5 card border-black">
+    <form [formGroup]="loginForm" (submit)="submitHandler()">
+      <div class="form-floating mb-3">
+        <input
+          type="email"
+          class="form-control"
+          placeholder=""
+          formControlName="email"
+        />
+        <label>Email</label>
+        <div class="text-danger" *ngIf="email?.touched">
+          <span *ngIf="email?.errors?.['required']"
+            >Email filed is required!</span
+          >
+          <span *ngIf="email?.errors?.['email']">Invalid email format!</span>
+        </div>
+      </div>
+
+      <div class="form-floating mb-3">
+        <input
+          type="password"
+          class="form-control"
+          placeholder=""
+          formControlName="password"
+        />
+        <label>Password</label>
+        <div class="text-danger" *ngIf="password?.touched">
+          <span *ngIf="password?.errors?.['required']"
+            >Password filed is required!</span
+          >
+          <span *ngIf="password?.errors?.['pattern']">Invalid Password!</span>
+        </div>
+      </div>
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="userType"
+          value="buyer"
+          formControlName="userType"
+          id="buyer"
+        />
+        <label class="form-check-label" for="buyer">Buyer</label>
+      </div>
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="userType"
+          value="seller"
+          formControlName="userType"
+          id="seller"
+        />
+        <label class="form-check-label" for="seller">Seller</label>
+      </div>
+      <div
+        class="mt-4 d-grid"
+        [ngStyle]="{
+          cursor: loginForm.valid ? 'pointer' : 'not-allowed'
+        }"
+      >
+        <button
+          class="btn btn-primary"
+          [disabled]="isSubmitting || loginForm.invalid"
+        >
+          {{ isSubmitting ? "Logging in..." : "Login" }}
+        </button>
+      </div>
+      <div class="text-center mt-3">
+        <p>Don't have Account, Register here <a href="/register">Sign Up</a></p>
+        <p>Forget Password. <a href="/forget-password/email"> Click here</a></p>
+      </div>
+    </form>
+  </div>
+</div>

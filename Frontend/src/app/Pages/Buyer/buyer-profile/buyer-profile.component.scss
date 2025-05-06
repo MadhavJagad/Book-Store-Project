@@ -1,0 +1,394 @@
+// Modern Bookstore Profile Page SCSS
+
+// Variables (matching with the homepage styles)
+$primary-color: #2c3e50;
+$secondary-color: #e74c3c;
+$accent-color: #3498db;
+$light-bg: #f8f9fa;
+$dark-bg: #2c3e50;
+$text-dark: #333;
+$text-light: #fff;
+$text-muted: #6c757d;
+$border-radius: 4px;
+$box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+$transition: all 0.3s ease;
+
+$heading-font: "Playfair Display", serif;
+$body-font: "Roboto", sans-serif;
+
+// Profile Page Styles
+.profile-container {
+  background-color: $light-bg;
+  min-height: 100vh;
+}
+
+// Profile Sidebar
+.profile-sidebar {
+  background-color: $text-light;
+  border-radius: $border-radius;
+  padding: 30px;
+  box-shadow: $box-shadow;
+  text-align: center;
+  height: 100%;
+}
+
+.profile-avatar {
+  margin-bottom: 20px;
+
+  .avatar-circle {
+    width: 120px;
+    height: 120px;
+    background-color: $secondary-color;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+
+    .initials {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: $text-light;
+      text-transform: uppercase;
+    }
+  }
+}
+
+.profile-name {
+  font-family: $heading-font;
+  font-weight: 700;
+  font-size: 1.8rem;
+  margin-bottom: 5px;
+}
+
+.profile-status {
+  color: $text-muted;
+  font-size: 0.9rem;
+  margin-bottom: 20px;
+  position: relative;
+
+  &:after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 2px;
+    background-color: $secondary-color;
+  }
+}
+
+.profile-stats {
+  display: flex;
+  justify-content: space-between;
+  margin: 25px 0;
+  padding: 15px 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+
+  .stat-item {
+    display: flex;
+    flex-direction: column;
+
+    .stat-number {
+      font-weight: 700;
+      font-size: 1.4rem;
+      color: $primary-color;
+    }
+
+    .stat-label {
+      font-size: 0.8rem;
+      color: $text-muted;
+      margin-top: 5px;
+    }
+  }
+}
+
+.profile-quote {
+  background-color: rgba($primary-color, 0.05);
+  padding: 20px;
+  border-radius: $border-radius;
+  margin: 25px 0;
+  position: relative;
+
+  .quote-icon {
+    color: $secondary-color;
+    font-size: 1.5rem;
+    opacity: 0.2;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+  }
+
+  p {
+    font-style: italic;
+    font-size: 0.95rem;
+    margin-bottom: 5px;
+    padding-left: 10px;
+  }
+
+  .quote-author {
+    display: block;
+    text-align: right;
+    font-size: 0.85rem;
+    color: $text-muted;
+  }
+}
+
+.profile-actions {
+  .btn {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+// Profile Content
+.profile-content {
+  background-color: $text-light;
+  border-radius: $border-radius;
+  box-shadow: $box-shadow;
+  padding: 30px;
+  height: 100%;
+}
+
+.profile-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+
+  .section-title {
+    font-family: $heading-font;
+    font-weight: 700;
+    margin-bottom: 0;
+    position: relative;
+    display: inline-block;
+
+    &:after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -5px;
+      width: 40px;
+      height: 2px;
+      background-color: $secondary-color;
+    }
+  }
+
+  .btn-edit {
+    background-color: $text-light;
+    color: $primary-color;
+    border: 1px solid $primary-color;
+    transition: $transition;
+
+    &:hover {
+      background-color: $primary-color;
+      color: $text-light;
+    }
+  }
+
+  .btn-save {
+    background-color: $secondary-color;
+    color: $text-light;
+    border: 1px solid $secondary-color;
+    transition: $transition;
+
+    &:hover {
+      background-color: darken($secondary-color, 10%);
+    }
+  }
+}
+
+.profile-info {
+  margin-bottom: 30px;
+
+  .info-group {
+    margin-bottom: 20px;
+
+    label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: $text-muted;
+      margin-bottom: 8px;
+    }
+
+    .info-value {
+      font-size: 1rem;
+      color: $text-dark;
+      padding: 8px 0;
+
+      .info-icon {
+        color: $secondary-color;
+        width: 20px;
+        margin-right: 10px;
+      }
+    }
+
+    .info-input {
+      .form-control {
+        background-color: $light-bg;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        border-radius: $border-radius;
+        padding: 10px 15px;
+        transition: $transition;
+
+        &:focus {
+          border-color: $accent-color;
+          box-shadow: 0 0 0 0.25rem rgba($accent-color, 0.25);
+        }
+      }
+    }
+  }
+}
+
+// Recent Activity
+.recent-activity {
+  .section-title {
+    font-family: $heading-font;
+    font-weight: 700;
+    margin-bottom: 25px;
+    position: relative;
+    display: inline-block;
+
+    &:after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -5px;
+      width: 40px;
+      height: 2px;
+      background-color: $secondary-color;
+    }
+  }
+}
+
+.activity-timeline {
+  position: relative;
+
+  &:before {
+    content: "";
+    position: absolute;
+    left: 20px;
+    top: 5px;
+    bottom: 5px;
+    width: 2px;
+    background-color: rgba($primary-color, 0.1);
+  }
+}
+
+.activity-item {
+  position: relative;
+  padding-left: 60px;
+  padding-bottom: 25px;
+
+  &:last-child {
+    padding-bottom: 0;
+  }
+
+  .activity-icon {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 40px;
+    height: 40px;
+    background-color: $primary-color;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+
+    i {
+      color: $text-light;
+      font-size: 1rem;
+    }
+  }
+
+  &:nth-child(2) .activity-icon {
+    background-color: $secondary-color;
+  }
+
+  &:nth-child(3) .activity-icon {
+    background-color: $accent-color;
+  }
+
+  .activity-content {
+    h5 {
+      font-weight: 600;
+      font-size: 1.1rem;
+      margin-bottom: 5px;
+    }
+
+    p {
+      margin-bottom: 5px;
+      color: $text-dark;
+    }
+
+    .activity-date {
+      font-size: 0.8rem;
+      color: $text-muted;
+    }
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 992px) {
+  .profile-sidebar,
+  .profile-content {
+    margin-bottom: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .profile-header {
+    flex-direction: column;
+    align-items: flex-start;
+
+    .btn-edit,
+    .btn-save {
+      margin-top: 15px;
+    }
+  }
+
+  .activity-item {
+    padding-left: 50px;
+
+    .activity-icon {
+      width: 35px;
+      height: 35px;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .profile-sidebar,
+  .profile-content {
+    padding: 20px;
+  }
+
+  .profile-name {
+    font-size: 1.5rem;
+  }
+
+  .profile-stats {
+    flex-direction: column;
+
+    .stat-item {
+      margin-bottom: 15px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
